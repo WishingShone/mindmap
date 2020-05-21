@@ -51,6 +51,7 @@ import * as d3 from '../js/d3'
 import { flextree } from 'd3-flextree'
 import JSONData from '../js/JSONData'
 import History from '../js/History'
+import { uuid } from 'vue-uuid'
 
 export default {
   name: 'mindmap',
@@ -272,7 +273,7 @@ export default {
       const seleData = sele.data()[0]
       const seleRawData = sele.data()[0].data
       const pNode = sele.node().parentNode
-      const newJSON = { name: '新建节点', children: [] }
+      const newJSON = { name: '新建节点',uuid: uuid.v1(), children: [] };
       const keyName = d3.event.key
 
       if (keyName === 'Tab') { // 添加子节点
@@ -403,7 +404,7 @@ export default {
     },
     gBtnClick(a, i, n) { // 添加子节点
       if (n[i].style.opacity === '1') {
-        const newJSON = { name: '新建节点', children: [] }
+        const newJSON = { name: '新建节点',uuid: uuid.v1(), children: [] };
         const d = d3.select(n[i].parentNode).data()[0]
         this.add(d.data, newJSON)
         this.mouseLeave(null, i, n)

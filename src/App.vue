@@ -88,6 +88,7 @@
         </v-card>
       </v-container>
     </v-content>
+    
   </v-app>
 </template>
 
@@ -123,6 +124,11 @@ export default {
     ySpacing: 20,
     strokeWidth: 4,
   }),
+  watch:{
+    mmdata() {
+      console.log(this.mmdata)
+    }
+  },
   mounted() {
   }
 }

@@ -21,6 +21,7 @@ import JSONData from '../JSONData'
 import * as d3 from 'd3'
 // import outline from '../components/Outline'
 import mindmap from '../components/MindMap'
+import { uuid } from 'vue-uuid'
 
 export default {
   components: {
@@ -53,7 +54,7 @@ export default {
       if (!sele.nodes()[0]) {
         return;
       }
-      const newJSON = { name: '新建节点', children: [] };
+      const newJSON = { name: '新建节点', uuid: uuid.v1() ,children: [] };
       const keyName = event.key;
       if (keyName === 'Tab') { // 添加子节点
         event.preventDefault();
